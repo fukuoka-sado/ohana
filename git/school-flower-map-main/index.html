@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校内お花マップ</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 🌸 選択メニュー用コンテナ 🌸 -->
+    <div id="filter-container">
+        <!-- 季節で絞り込み -->
+        <div class="filter-group">
+            <label for="season-select"> 季節 ：</label>
+            <select id="season-select">
+                <option value="all">すべての季節</option>
+                <option value="spring">🌸 春</option>
+                <option value="summer">🌻 夏</option>
+                <option value="autumn">🍁 秋</option>
+                <option value="winter">❄️ 冬</option>
+            </select>
+        </div>
+
+        <!-- 花でジャンプ -->
+        <div class="filter-group">
+            <label for="flower-select">🌸 花：</label>
+            <select id="flower-select">
+                <option value="">-- すべて表示 --</option>
+                <option value="アジサイ">アジサイ</option>
+                <option value="ツバキ">ツバキ</option>
+                <option value="ギボウシ">ギボウシ</option>
+                <option value="カンゾウ">カンゾウ</option>
+                <option value="アザミ">アザミ</option>
+                <option value="カタバミ">カタバミ</option>
+                <option value="クンシラン">クンシラン</option>
+                <option value="ハルジオン">ハルジオン</option>
+                <option value="シモツケ">シモツケ</option>
+                <option value="ヤブラン">ヤブラン</option>
+                <option value="ブタナ">ブタナ</option>
+                <!-- 花を増やす場合はここに <option value="ID">名前</option> を追加していきます -->
+            </select>
+        </div>
+    </div>
+
+    <!-- 地図エリア -->
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
