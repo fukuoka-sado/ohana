@@ -43,7 +43,6 @@ const flowers = {
     azisai01:{//アジサイ
         name: "アジサイ",
         season: "spring",
-        //coords: [628, 715],
         marker: L.marker([628, 715]).bindPopup("<b>アジサイ</b><br>6月開花")
     },azisai02:{//アジサイ
         name: "アジサイ",
@@ -145,45 +144,39 @@ flowerSelect.addEventListener('change', (e) => {
             }
         }
     });
-
     // 全体表示に戻す
     map.fitBounds(imageBounds);
 });
 
-// 季節が変更されたときの処理（ピンの表示・非表示）
+// 季節が変更されたときの処理
 seasonSelect.addEventListener('change', (e) => {
     const selectedSeason = e.target.value;
 
-    // 各花のピンを表示するか隠すかを判定
+    // ピンを表示するか隠すかを判定
     Object.keys(flowers).forEach(key => {
         const flower = flowers[key];
 
         if (selectedSeason === 'all' || flower.season === selectedSeason) {
-            // 表示する（すでに表示されていなければ追加）
+            // 表示する
             if (!map.hasLayer(flower.marker)) {
                 flower.marker.addTo(map);
             }
         } else {
-            // 隠す（地図から削除）
+            // 隠す
             if (map.hasLayer(flower.marker)) {
                 map.removeLayer(flower.marker);
             }
         }
     });
-
-    // 「花を選ぶ」プルダウンの選択肢も更新
-    //updateFlowerOptions(selectedSeason);
-
     // 全体表示に戻す
     map.fitBounds(imageBounds);
 });
 
 // 初期化：最初にすべてのピンを地図に追加し、プルダウンを作る
 Object.keys(flowers).forEach(key => flowers[key].marker.addTo(map));
-//updateFlowerOptions('all');
 
 // 画像上のどこにピンを置けばいいか（座標）を調べるためのデバッグコード
-// 地図の上をクリックすると、ブラウザの「検証（デベロッパーツール）」のコンソールに座標が表示される。
+// 地図の上をクリックすると、ブラウザの「検証（f12）」のコンソールに座標が表示される。
 map.on('click', function(e) {
     console.log("クリックした場所の座標: [" + e.latlng.lat + ", " + e.latlng.lng + "]");
 });
